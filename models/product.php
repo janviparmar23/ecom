@@ -8,6 +8,7 @@ class productModel
         include 'connection.php';
         $this->con = $conn;
     }
+
     public function show()
     {
         $sql = "SELECT q.name as image,p.name,p.Price,p.ID,p.qty from product as p LEFT JOIN product_image as q on p.ID = q.Product_id LIMIT 6";
@@ -72,7 +73,8 @@ class productModel
         $finaltotal = 0;
         $a = [];
         foreach ($session as $array) :
-            if ($array['ID'] != $_POST['id']) {
+            if ($array['ID'] != $_POST['id']) 
+            {
                 $a[] = $array;
             }
             $finaltotal += $array['total'];
@@ -87,7 +89,6 @@ class productModel
     }
 
     public function ADDTOCART()
-
     {
         $b = [];
         $finaltotal = 0;
@@ -109,7 +110,6 @@ class productModel
         $session = array_values($b);
         $_SESSION['products'] = array_values($b);
         $_SESSION['Total'] = $finaltotal;
-        
     }
 
 
@@ -137,15 +137,16 @@ class productModel
 
 
         if ($same_as_bill == 1) {
-            // $sql .="INSERT INTO `Address`(`type`, `user_id`, `name`, `email`, `phone`, `address`, `same_as_bill`)  VALUES ('$type','$user_id','$name','$email','$phone','$address','$same_as_bill');";
         } else {
             $sql .= "INSERT INTO `Address`(`type`, `user_id`, `name`, `email`, `phone`, `address`, `same_as_bill`) 
             VALUES ('$stype','$suser_id','$sname','$semail','$sphone','$saddress','$shipto');";
         }
-
         $row = mysqli_multi_query($this->con, $sql);
-
         if ($row) {
+
+            $_SESSION['billto'] =  mysqli_insert_id($this->con);
+            $_SESSION['shipto'] = mysqli_insert_id($this->con);
+
             return true;
         } else {
             echo "error" . mysqli_error($this->con);

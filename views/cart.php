@@ -3,8 +3,6 @@
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 
-
-
 <?php
 
 include_once(__DIR__ . '/../includes/product.php');
@@ -19,6 +17,7 @@ if (isset($_POST['save'])) {
 }
 $admin->ADDTOCART();
 $session = $_SESSION['products'];
+
 
 ?>
 
@@ -181,3 +180,38 @@ $session = $_SESSION['products'];
     </tr>
    
 </table>
+
+
+<?php
+
+
+?>
+<?php
+    include_once(__DIR__ . '/../includes/order.php');
+    $order = new order();
+    if(isset($_POST['checkout'])){
+        $order->orderdata();
+    }
+   
+?>
+
+<form name="" method="POST" action="checkout_session.php" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <input type="hidden" name="cutomer_id" value="<?php echo $_SESSION['ID']; ?>" />
+        </tr>
+        <tr>
+            <input type="hidden" name="bill_to" value="<?php echo $_SESSION['billto'] ?> " />
+        </tr>
+        <tr>
+            <input type="hidden" name="shipto" value="<?php echo $_SESSION['shipto'] ?> " />
+        </tr>
+        <tr>
+            <input type="hidden" name="status" value="pending" />
+        </tr>
+        <tr>
+            <input type="submit" name="checkout" value="addtocart" />
+        </tr>
+
+    </table>
+</form>
