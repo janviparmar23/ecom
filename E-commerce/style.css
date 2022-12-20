@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Marker+Hatch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css');
+
+header {
+    height: 86px;
+    width: 100%;
+    background-color: grey;
+}
+
+footer {
+    height: 100px;
+    width: 100%;
+    background: #1b1a1a;
+    clear: both;
+}
+main {
+    min-height: 550px;
+}
+.container {
+    background-color: #f5eeee;
+}
+table.admintable {
+    height: 370px;
+    width: 400px;
+    border: 1px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+input {
+    height: 52px;
+    width: 311px;
+}
+
+input.submit {
+    background-color: #8888e7;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    border-color: #8888e7;
+}
+
+th.font {
+    font-size: 26px;
+}
+
+.top-bar {
+    height: 180px;
+    width: 100%;
+}
+
+span.logo {
+    font-size: 57px;
+    margin-left: 59px;
+    font-family: 'Rubik Marker Hatch', cursive;
+    
+}
+
+span.pp {
+    float: right;
+    text-align: center;
+    font-size: 57px;
+    height: 80px;
+    width: 80px;
+    background-color: #a29797;
+    border-radius: 80%;
+}
+
+main{
+    float:left;
+    width: 85%;
+    min-height: 550px;
+}
+table.banner-image{
+   
+    display: inline-block;
+    border: black;
+    height: 188px;
+    width: 200px;
+}
+
+form.categoryform{
+   
+    margin: 40px auto;
+}
+table.categorytable{
+    height: 265px;
+    width: 369px;
+    margin :0 auto;
+}
+table.showcatgeory{
+    height: 118px;
+    width: 609px;
+}
+nav li {
+
+    height: 80px;
+    width: 120px;
+    line-height: 80px;
+    list-style-type: none;
+    
+}
+a{
+    color : black;
+    text-decoration: none;
+}
+
+ aside
+{
+    min-height: 550px;
+    width : 15%;
+    background-color:grey ;
+    color:white;
+    text-decoration: none;
+    float: left;
+    font-family: 'Roboto Mono', monospace;
+}/*
+ul.my-menu
+{
+    padding: 8px;
+    font-size: 22px;
+    color: white;
+    display : block;
+    margin: 38px 23%;
+}
+nav li a:hover:after {
+    display: inline-block;
+}*/
+.fa-2x {
+    font-size: 2em;
+}
+.fa{
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+.fa-home:before {
+    content: "\f015";
+}
+.fa-container:before {
+    content: "\f03e";
+}
+.fa-color
+{
+    color:white;
+}
