@@ -8,7 +8,6 @@ class productModel
         include 'connection.php';
         $this->con = $conn;
     }
-
     public function show()
     {
         $sql = "SELECT q.name as image,p.name,p.Price,p.ID,p.qty from product as p LEFT JOIN product_image as q on p.ID = q.Product_id LIMIT 6";

@@ -14,6 +14,7 @@
             <li><a href="index.php?action=aboutus&do=aboutus" class="third-bar">About Us</a></li>
             <li><a href="" class="third-bar">Men's Collection</a></li>
             <li><a href="" class="third-bar">Women's Collection</a></li>
+            <li><a href="index.php?action=orderdetailview&do=order" class="third-bar">Order</a></li>
             <li><a href="index.php?action=contact&do=docontact" class="third-bar">Contact Us</a></li>
             <li><a href="index.php?action=cart&do=docart" class=""><i class="fas fa fa-shopping-cart fa-cart"></i></a></li>
         </ul>
