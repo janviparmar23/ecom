@@ -15,6 +15,8 @@ class Registration
     {
         if($this->userModel->save($_POST)){
             echo "User register successfully!";
+            $url = "index.php ";
+            echo '<script>window.location="' . $url . '"</script>';
         }else{
             echo "Something went wrong!";
         }
@@ -23,6 +25,8 @@ class Registration
     {
         if($this->userModel->login($_POST)){
             echo " login succesfull";
+            $url = "index.php ";
+            echo '<script>window.location="' . $url . '"</script>';
         }
         else
         {
@@ -32,6 +36,7 @@ class Registration
     public function contactus(){
         if($this->userModel->contactus($_POST)){
            // echo " login succesfull";
+
         }
         else
         {

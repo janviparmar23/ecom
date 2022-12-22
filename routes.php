@@ -2,10 +2,6 @@
 
 <?php
 
-// include_once(__DIR__ . '/../includes/order.php');
-// $admin= new order();
-// $admin->showorder($_GET['id']);
-
 
 
 if (isset($_GET['action'])) {
@@ -19,6 +15,13 @@ if (isset($_GET['action'])) {
                 include_once('views/Login.php');
             }
             break;
+            case 'logout':
+                if ($do == 'logout') {
+                   session_destroy();
+                   include_once('views/homepage.php');
+                }
+                break;
+
         case 'register':
             if ($do == 'register') {
                 include_once('views/Registration.php');
@@ -26,7 +29,7 @@ if (isset($_GET['action'])) {
             break;
         case 'cart':
             if ($do == 'docart') {
-                echo "succesfull";
+                
                 include_once('views/cart.php');
             }
             break;

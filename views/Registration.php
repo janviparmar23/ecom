@@ -1,4 +1,9 @@
+
+
+
+
 <form name="user_registrtion" method="POST" action="" enctype="multipart/form-data">
+
     <center>
         <h1>USER REGISTRATION FORM</h1>
 

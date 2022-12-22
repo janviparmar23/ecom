@@ -14,9 +14,9 @@ class order
 
     public function orderdata()
     {
-
+       
         $orderId = $this->orderModel->orderdata($_POST);
-
+   
         if ($orderId) {
             session_start();
 
@@ -44,7 +44,6 @@ class order
                 array_push($b, $a);
             endforeach;
 
-
             $url = $_SESSION['order_id'];
 
             require __DIR__ . '/../vendor/autoload.php';
@@ -70,8 +69,17 @@ class order
     public function ordercomplete($orderId)
     {
 
-        $data = $this->orderModel->ordercomplete($orderId);
-        return $data;
+    $data = $this->orderModel->ordercomplete($orderId);
+       $products =  $_SESSION['products'] ;
+       $a = [];
+           if ($products) 
+           {
+               $a[] = $products;
+           }
+       if (isset($_SESSION['products'])) {
+           $_SESSION['products'] = $a;
+       }
+     
     }
     public function cancelorder($orderId)
     {
@@ -91,22 +99,34 @@ class order
         $data = $this->orderModel->orderlistingview();
         return $data;
     }
+
+    public function orderviewdatilfromorderid($orderId)
+    {
+       
+        $data = $this->orderModel->orderviewdatilfromorderid($orderId);
+        return $data;
+    }
     public function detailsofadd($orderId)
     {
        
         $data = $this->orderModel->detailsofadd($orderId);
         return $data;
     }
-    public function detailstoaddship()
+    public function detailstoaddship($orderId)
     {
        
-        $data = $this->orderModel->detailstoaddship();
+        $data = $this->orderModel->detailstoaddship($orderId);
         return $data;
     }
-    public function productdetail()
+    public function productdetail($orderId)
     {
         
-        $data = $this->orderModel->productdetail();
+        $data = $this->orderModel->productdetail($orderId);
+        return $data;
+    }
+    public function ordertotal($orderId)
+    {
+        $data = $this->orderModel->ordertotal($orderId);
         return $data;
     }
 }

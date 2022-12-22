@@ -19,13 +19,7 @@ class productModel
                 $data[] = $row;
             }
         }
-        // echo "<pre>";
-        //print_r($data);
-        //$_SESSION['data'] = ['image'];
-        //['Price']['ID']['Image'];
-        //$_SESSION['Price'] = ;
-
-        //print_r($_SESSION);
+    
 
         return $data;
     }

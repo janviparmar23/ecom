@@ -2,30 +2,34 @@
 
 include_once(__DIR__ . '/../includes/order.php');
 $order = new order();
-$data = $order->orderlistingview();
+$data = $order->orderviewdatilfromorderid($_GET['order_id']);
 $bill = $order->detailsofadd($_GET['order_id']);
-$ship = $order->detailstoaddship();
-$product_detail = $order->productdetail();
+$ship = $order->detailstoaddship($_GET['order_id']);
+$product_detail = $order->productdetail($_GET['order_id']);
+$order_detail = $order->ordertotal(($_GET['order_id']));
+
 ?>
 <div>
-    <table>
+    <table border="1">
+        <?php foreach ($data as $orderdata): ?>
         <tr>
-            <th>
+            <th colspan="2">
                 Order details:
             </th>
         </tr>
-            <tr>
-                <td>order id :</td>
-                <td><?php echo $orderview['order_id']; ?></td>
-            </tr>
-            <tr>
-                <td>customer name :</td>
-                <td><?php echo $orderview['name']; ?></td>
-            </tr>
-            <tr>
-                <td>order status :</td>
-                <td><?php echo $orderview['status']; ?></td>
-            </tr>
+        <tr>
+            <td>order id :</td>
+            <td><?php echo $orderdata['order_id']; ?></td>
+        </tr>
+        <tr>
+            <td>customer name :</td>
+            <td><?php echo $orderdata['name']; ?></td>
+        </tr>
+        <tr>
+            <td>order status :</td>
+            <td><?php echo $orderdata['status']; ?></td>
+        </tr>
+        <?php endforeach; ?>
     </table>
 </div>
 <div>
@@ -126,5 +130,10 @@ Product details:
 
             <td><?php echo $pd['product_total']; ?></td>
         </tr>
+    <?php endforeach; ?>
+    <tr>
+        <?php foreach($order_detail as $od): ?>
+        <td colspan = "6">order total : <?php echo $od['pr_TOTAL']; ?></td>
+    </tr>
     <?php endforeach; ?>
 </table>

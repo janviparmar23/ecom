@@ -18,9 +18,9 @@ class product
     }
     public function storedata(){
         if ($this->productModel->storedata()) {
-          
+          return true;
         } else {
-            echo "Something went wrong!";
+            return false;
         }
     }
 

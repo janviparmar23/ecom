@@ -37,6 +37,7 @@ class orderModel
 
         $sql =  "UPDATE `order` SET `status`='complete' where order_id = $order_id ";
         if (mysqli_query($this->con, $sql)) {
+
         } else {
             echo " something went wrong";
         }
@@ -73,7 +74,9 @@ class orderModel
 
     public function orderlistingview()
     {
-        $sql = "SELECT O.`order_id`,O.`status`,O.`pr_TOTAL`,A.`name` FROM `order` as O ,`Address` as A WHERE A.`user_id` = O.`customer_id` and A.type = 'bill' ";
+        $ID = $_SESSION['ID'];
+        $sql = "SELECT O.`order_id`,O.`status`,O.`pr_TOTAL`,A.`name` FROM `order` as O ,`Address` as A WHERE A.`user_id` = O.`customer_id` and A.type = 'bill' AND O.customer_id = $ID ";
+      
         $result = mysqli_query($this->con, $sql);
         $data = [];
         if (mysqli_num_rows($result) > 0) {
@@ -83,6 +86,19 @@ class orderModel
         }
         return $data;
     }
+    public function orderviewdatilfromorderid($order_id)
+    {
+        $sql = "SELECT O.`order_id`,O.`status`,O.`pr_TOTAL`,A.`name` FROM `order` as O ,`Address` as A WHERE A.`user_id` = O.`customer_id` and A.type = 'bill' AND O.order_id = $order_id";
+        $result = mysqli_query($this->con, $sql);
+        $data = [];
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
     public function detailsofadd($order_id)
     {
 
@@ -97,9 +113,9 @@ class orderModel
         }
         return $data;
     }
-    public function detailstoaddship()
+    public function detailstoaddship($order_id)
     {
-        $sql = "SELECT `name`, `email`, `phone`, `address`  FROM `Address` WHERE `type`= 'shipto' ";
+        $sql = "SELECT `name`, `email`, `phone`, `address` FROM `Address`as A, `order` as O WHERE `type`= 'shipto' AND A.user_id = O.customer_id and O.order_id =  $order_id";
         $result = mysqli_query($this->con, $sql);
         $data = [];
         if (mysqli_num_rows($result) > 0) {
@@ -109,9 +125,9 @@ class orderModel
         }
         return $data;
     }
-    public function productdetail()
+    public function productdetail($order_id)
     {
-        $sql="SELECT p.`ID` as Product_id, p.`name` as product_name, p.`qty` as product_quanitity , p.`Price` as product_price ,I.`name` as product_image , op.`product_total` as product_total FROM `product` as p ,`order_products` as op,`product_image` as I WHERE p.ID = I.Product_ID and p.ID = op.product_ID";
+        $sql="SELECT p.`ID` as Product_id, p.`name` as product_name, p.`qty` as product_quanitity , p.`Price` as product_price ,I.`name` as product_image , op.`product_total` as product_total FROM `product` as p ,`order_products` as op,`product_image` as I WHERE p.ID = I.Product_ID and p.ID = op.product_ID AND op.order_id = $order_id";
       
         $result = mysqli_query($this->con, $sql);
         $data = [];
@@ -121,5 +137,20 @@ class orderModel
             }
         }
         return $data;
+    }
+
+    public function ordertotal($order_id)
+    {
+        $sql = "SELECT  `pr_TOTAL` FROM `order` WHERE order_id = $order_id";
+        $result = mysqli_query($this->con, $sql);
+        $data = [];
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+
+
     }
 }
