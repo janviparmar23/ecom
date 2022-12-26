@@ -82,7 +82,9 @@ table.banner-image{
 }
 
 form.categoryform{
-   
+    background-color: white;
+    height: 341px;
+    width: 650px;
     margin: 40px auto;
 }
 table.categorytable{
@@ -148,3 +150,15 @@ nav li a:hover:after {
 {
     color:white;
 }
+.editorder
+{
+    height: 40px;
+    width: 130px;
+}
+.container {
+    padding: 0 4%;
+  }
+  .orderdetail
+  {
+    width: 60%;
+  }

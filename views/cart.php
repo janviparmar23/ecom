@@ -14,6 +14,8 @@ if (isset($_POST['save'])) {
 }
 $admin->ADDTOCART();
 $session = $_SESSION['products'];
+echo "<pre>";
+print_r($_SESSION);
 
 ?>
 <div class="address">
@@ -22,7 +24,6 @@ $session = $_SESSION['products'];
             <tr>
                 <th class="tablehead">BILL TO :</th>
             </tr>
-
             <tr>
                 <td>
                     <input type="text" name="name" placeholder="enter name" class="input-text-register" />

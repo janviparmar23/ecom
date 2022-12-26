@@ -34,6 +34,16 @@ switch ($action) {
             include_once('views/category_edit.php');
             break;
     }
-   
+    case  'order':
+        if($do == 'showorder' ){
+            include_once('views/orderview.php');
+            break;
+    }
+    case  'editorder':
+        if($do == 'editorder' ){
+            include_once('views/editorder.php');
+            break;
+    }
+
 }
 ?>

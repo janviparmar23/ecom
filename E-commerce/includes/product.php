@@ -32,5 +32,15 @@ class product
             echo "Something went wrong!";
         }
     }
+  
+    public function addaddress()
+    {
+        if($this->productModel->addaddress($_POST))
+        {
+           
+        }else{
+            echo " error";
+        }
+    }
 }
 ?>

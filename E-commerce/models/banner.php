@@ -5,7 +5,7 @@ class bannerModel
     private $con;
     public function __construct()
     {
-        include_once __DIR__.'/../connection.php';
+        include_once 'connection.php';
         $this->con = $conn;
     }
     public function add($data)

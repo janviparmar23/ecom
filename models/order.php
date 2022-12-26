@@ -103,7 +103,6 @@ class orderModel
     {
 
         $sql = "SELECT `name`, `email`, `phone`, `address` FROM `Address`as A, `order` as O WHERE `type`= 'bill' AND A.user_id = O.customer_id and O.order_id = $order_id";
-       
         $result = mysqli_query($this->con, $sql);
         $data = [];
         if (mysqli_num_rows($result) > 0) {

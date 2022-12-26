@@ -127,23 +127,19 @@ class productModel
 
         $sql = "INSERT INTO `Address`(`type`, `user_id`, `name`, `email`, `phone`, `address`, `same_as_bill`) 
         VALUES ('$type','$user_id','$name','$email','$phone','$address','$same_as_bill');";
-
+        
+        mysqli_query($this->con, $sql);
+        $_SESSION['billto'] =  mysqli_insert_id($this->con);
 
         if ($same_as_bill == 1) {
+            $_SESSION['shipto'] = $_SESSION['billto'];
         } else {
-            $sql .= "INSERT INTO `Address`(`type`, `user_id`, `name`, `email`, `phone`, `address`, `same_as_bill`) 
+            $sql = "INSERT INTO `Address`(`type`, `user_id`, `name`, `email`, `phone`, `address`, `same_as_bill`) 
             VALUES ('$stype','$suser_id','$sname','$semail','$sphone','$saddress','$shipto');";
-        }
-        $row = mysqli_multi_query($this->con, $sql);
-        if ($row) {
+            
+            mysqli_query($this->con, $sql);
 
-            $_SESSION['billto'] =  mysqli_insert_id($this->con);
             $_SESSION['shipto'] = mysqli_insert_id($this->con);
-
-            return true;
-        } else {
-            echo "error" . mysqli_error($this->con);
-            return false;
         }
     }
 }
